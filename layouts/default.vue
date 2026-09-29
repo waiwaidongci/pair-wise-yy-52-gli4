@@ -26,6 +26,7 @@ const nav = [
         <UButton class="mobile-menu" icon="i-heroicons-bars-3" color="gray" variant="ghost" @click="open = !open" />
         <div><b>运行中 · A 区集电线路检修</b><span class="muted desktop-only">值班负责人：李骁 · 2026-09-29 16:48</span></div>
         <span class="flex-1" />
+        <UBadge v-if="store.emergency.status !== '正常'" color="red" variant="subtle">{{ store.emergency.status }} · 接管 {{ store.emergency.handedTo }}</UBadge>
         <UBadge :color="store.connection === '在线' ? 'green' : 'amber'" variant="subtle">{{ store.connection }}</UBadge>
         <UButton v-if="store.pendingRetry" size="sm" color="amber" variant="soft" @click="store.retryPending">重试 {{ store.pendingRetry }} 项</UButton>
         <UButton icon="i-heroicons-plus" color="primary" @click="navigateTo('/permits?new=1')">新建许可</UButton>
